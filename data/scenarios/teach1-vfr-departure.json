@@ -1,0 +1,96 @@
+{
+  "id": "teach1-vfr-dep",
+  "title": "VFR Departure from Runway City Airport",
+  "airportId": "TEACH1",
+  "aircraft": { "callsign": "N123FS", "type": "Cessna 172S" },
+  "startStepId": "atis",
+  "steps": {
+    "atis": {
+      "id": "atis",
+      "frequency": "ATIS",
+      "atc": "Runway City Airport information Alpha. Time one-four-five-five Zulu. Wind one-eight-zero at one-zero. Visibility one-zero. Sky clear. Temperature two-two, dew point one-zero. Altimeter two-niner-niner-two. Landing and departing Runway One Eight. Advise on initial contact you have information Alpha.",
+      "next": { "pass": "ground_call" }
+    },
+    "ground_call": {
+      "id": "ground_call",
+      "frequency": "GND",
+      "position": "fbo",
+      "pilot": {
+        "prompt": "Call Runway City Ground. You are at the FBO ramp and want to taxi to Runway 18 for a VFR departure to the north. Include all four parts: who you're calling, who you are, where you are, and what you want.",
+        "required": [
+          { "kind": "callsign", "value": "NOVEMBER ONE TWO THREE FOXTROT SIERRA" },
+          { "kind": "route", "value": "FBO" },
+          { "kind": "runway", "value": "ONE EIGHT" }
+        ],
+        "example": "Runway City Ground, Cessna November One Two Three Foxtrot Sierra, FBO ramp, request taxi to Runway One Eight, VFR departure to the north."
+      },
+      "next": { "pass": "ground_clearance" }
+    },
+    "ground_clearance": {
+      "id": "ground_clearance",
+      "frequency": "GND",
+      "position": "fbo",
+      "atc": "November One Two Three Foxtrot Sierra, Runway City Ground, taxi to Runway One Eight via Charlie, Alpha, hold short of Runway Zero Niner Two Seven, altimeter two niner niner two.",
+      "pilot": {
+        "prompt": "Read back the taxi clearance. Required items: runway assigned, hold-short instruction, altimeter setting, and your callsign.",
+        "required": [
+          { "kind": "runway", "value": "ONE EIGHT" },
+          { "kind": "holdShort", "value": "ZERO NINER TWO SEVEN" },
+          { "kind": "altimeter", "value": "TWO NINER NINER TWO" },
+          { "kind": "callsign", "value": "NOVEMBER ONE TWO THREE FOXTROT SIERRA" }
+        ],
+        "example": "Taxi Runway One Eight via Charlie, Alpha, hold short Runway Zero Niner Two Seven, altimeter two niner niner two, November One Two Three Foxtrot Sierra."
+      },
+      "next": { "pass": "tower_call" }
+    },
+    "tower_call": {
+      "id": "tower_call",
+      "frequency": "TWR",
+      "position": "twa_hs_18",
+      "pilot": {
+        "prompt": "You have taxied to the Runway 18 hold-short line. Contact Runway City Tower. Report who you are, your position, that you have information Alpha, and that you are ready for departure.",
+        "required": [
+          { "kind": "callsign", "value": "NOVEMBER ONE TWO THREE FOXTROT SIERRA" },
+          { "kind": "runway", "value": "ONE EIGHT" }
+        ],
+        "example": "Runway City Tower, Cessna November One Two Three Foxtrot Sierra, holding short Runway One Eight, information Alpha, ready for departure VFR northbound."
+      },
+      "next": { "pass": "takeoff_clearance" }
+    },
+    "takeoff_clearance": {
+      "id": "takeoff_clearance",
+      "frequency": "TWR",
+      "position": "twa_hs_18",
+      "atc": "November One Two Three Foxtrot Sierra, Runway City Tower, Runway One Eight, cleared for takeoff, wind one-eight-zero at one-zero. Fly runway heading, departure frequency one-two-four-point-zero passing two thousand.",
+      "pilot": {
+        "prompt": "Read back the takeoff clearance. Required items: runway assignment and departure frequency.",
+        "required": [
+          { "kind": "runway", "value": "ONE EIGHT" },
+          { "kind": "frequency", "value": "ONE TWO FOUR POINT ZERO" },
+          { "kind": "callsign", "value": "NOVEMBER ONE TWO THREE FOXTROT SIERRA" }
+        ],
+        "example": "Cleared for takeoff Runway One Eight, departure one-two-four-point-zero, November One Two Three Foxtrot Sierra."
+      },
+      "next": { "pass": "departure_contact" }
+    },
+    "departure_contact": {
+      "id": "departure_contact",
+      "frequency": "DEP",
+      "pilot": {
+        "prompt": "You have climbed through 2,000 feet. Contact Runway City Departure on 124.0. Report your callsign, aircraft type, altitude climbing through, and your VFR destination.",
+        "required": [
+          { "kind": "callsign", "value": "NOVEMBER ONE TWO THREE FOXTROT SIERRA" },
+          { "kind": "altitude", "value": "TWO THOUSAND" }
+        ],
+        "example": "Runway City Departure, Cessna November One Two Three Foxtrot Sierra, climbing through two thousand, VFR northbound."
+      },
+      "next": { "pass": "complete" }
+    },
+    "complete": {
+      "id": "complete",
+      "frequency": "DEP",
+      "atc": "November One Two Three Foxtrot Sierra, Runway City Departure, radar contact. Squawk four-five-two-one. Maintain VFR, frequency change approved, good day.",
+      "next": { "pass": "COMPLETE" }
+    }
+  }
+}

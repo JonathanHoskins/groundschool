@@ -1,0 +1,143 @@
+---
+title: ATC Scenario — VFR Departure
+acsRefs:
+  - PA.I.F.K1
+  - PA.I.F.K2
+  - PA.I.F.K3
+sources:
+  - doc: AIM
+    ref: "Chapter 4 — Air Traffic Control"
+  - doc: FAA-H-8083-25
+    ref: "Chapter 7 — Communication Procedures"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { ScenarioPlayer } from '../../sims/atc/ScenarioPlayer'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acsRefs}
+  sources={frontmatter.sources}
+>
+
+## How this scenario works
+
+This simulator walks you through a complete VFR departure sequence — seven steps, from getting the ATIS through contacting Departure Control after takeoff. Each step puts you in a real communications situation:
+
+- **Listen** to the ATC side (press **Play** on any step to hear it spoken aloud, or replay it at any time)
+- **Type** your pilot transmission when it is your turn to talk
+- **See your grade** — the engine checks whether you included each required readback item and tells you exactly what you got right and what you missed
+- Use **Show example** at any time before submitting if you need a hint
+
+There are no tricks. Work through it at your own pace. If you fail a step, you can retry it or skip ahead and come back to it.
+
+## Before you start: what to expect
+
+The scenario covers the full ground-to-departure flow for a VFR departure out of a Class D airport:
+
+1. **Get the ATIS** — Listen to Runway City information Alpha. No readback required.
+2. **Call Ground** — Initiate contact with Ground Control from the FBO ramp. Includes all four parts of a standard initial call.
+3. **Receive taxi clearance** — Ground gives you a runway and routing. Read back the runway and hold-short instruction.
+4. **Call Tower at the hold short** — Contact Tower when you are ready to depart. Pilot-initiated call.
+5. **Receive takeoff clearance** — Tower clears you for takeoff with departure instructions. Read back the runway, heading, and departure frequency.
+6. **Contact Departure** — After becoming airborne, check in with Departure Control on the assigned frequency.
+7. **Departure radar contact** — Departure gives you a final transmission. No readback; scenario ends.
+
+## Scenario
+
+Start the scenario below. You can replay any ATC transmission by pressing Play.
+
+<ScenarioPlayer />
+
+## Debrief: what the FAA actually requires you to read back
+
+The grader deducts points for each required readback item you omit. Here is the official list of what must come back in your transmission — not just what is polite, but what is **required by regulation or FAA policy**:
+
+**Taxi clearances (AIM 4-3-18)**
+- **Runway assignment** — always read back the runway you are cleared to taxi to
+- **Hold-short instructions** — always read back any instruction to hold short of a runway, including the runway designation
+
+**On first contact with any facility (AIM 7-2-3)**
+- **Altimeter setting** — when ATC passes the altimeter, your first readback should include it; it confirms you have the current local setting
+
+**Takeoff clearance (AIM 4-3-14)**
+- **Runway** — confirm you are departing the correct runway
+- **Assigned heading** — if Tower assigns a departure heading, read it back
+- **Departure frequency** — if Tower hands you off ("contact Departure on 124.0"), include the frequency in your readback
+
+The rationale behind these requirements is straightforward: a closed-loop readback lets the controller catch any error before it becomes a runway incursion or a traffic conflict. The runway and hold-short items are especially safety-critical because an incorrect readback — or no readback at all — can put you on an active runway without clearance.
+
+## Review questions
+
+<QuestionCard
+  id="atc-q1"
+  prompt="You receive a taxi clearance to Runway 18, hold short of Runway 9/27. The FAA requires you to read back which items?"
+  choices={[
+    "Everything ATC said, word for word",
+    "Runway and hold-short instructions only",
+    "Runway, hold-short instructions, and altimeter on first contact",
+    "Only your callsign"
+  ]}
+  answer="Runway, hold-short instructions, and altimeter on first contact"
+  explanation="AIM 4-3-18 requires readback of runway assignments and hold-short instructions. AIM 7-2-3 adds the altimeter setting on first contact with a facility. You do not need to repeat every word ATC says."
+  sources={[{ doc: "AIM", ref: "4-3-18 and 7-2-3" }]}
+/>
+
+<QuestionCard
+  id="atc-q2"
+  prompt='ATC says "Cleared for takeoff Runway One Eight, fly runway heading, departure 124.0." What must be in your readback?'
+  choices={[
+    "Runway One Eight only",
+    "Runway One Eight, runway heading, and 124.0",
+    "Only the departure frequency",
+    "Nothing — takeoff clearances do not require readback"
+  ]}
+  answer="Runway One Eight, runway heading, and 124.0"
+  explanation="For a takeoff clearance, AIM 4-3-14 specifies you must read back the runway. Any assigned departure heading and hand-off frequency are also required elements because a missed frequency would break communication with Departure."
+  sources={[{ doc: "AIM", ref: "4-3-14" }]}
+/>
+
+<QuestionCard
+  id="atc-q3"
+  prompt='What does "information Alpha" mean in an ATIS broadcast?'
+  choices={[
+    "The airport elevation is above 1,000 feet",
+    "It is the first ATIS recording of the day",
+    "It is the current ATIS, identified by the phonetic letter A",
+    "Alpha is the highest-priority ATIS category"
+  ]}
+  answer="It is the current ATIS, identified by the phonetic letter A"
+  explanation="ATIS recordings cycle through the phonetic alphabet (Alpha, Bravo, Charlie…) each time the weather or NOTAMs change significantly. Saying 'with information Alpha' when you check in tells ATC you have the current ATIS and they do not need to re-state weather conditions."
+  sources={[{ doc: "AIM", ref: "4-1-13" }]}
+/>
+
+<QuestionCard
+  id="atc-q4"
+  prompt="When should you contact Departure Control after takeoff?"
+  choices={[
+    "Immediately after the wheels leave the runway",
+    "After reaching pattern altitude",
+    "When Tower instructs you to, or when clear of the Class D if not instructed",
+    "Only after leaving the airport area entirely"
+  ]}
+  answer="When Tower instructs you to, or when clear of the Class D if not instructed"
+  explanation="Tower will typically tell you 'contact Departure' at some point in the takeoff roll or shortly after. If they give you a frequency but no explicit 'contact' call, make the switch once you are established on your departure heading and clear of the Class D surface area. Never switch frequencies without authorization while still in Class D."
+  sources={[{ doc: "AIM", ref: "4-3-14" }]}
+/>
+
+<QuestionCard
+  id="atc-q5"
+  prompt="If you missed part of an ATC instruction, what should you do?"
+  choices={[
+    "Guess and proceed — do not tie up the frequency",
+    "Ask ATC to say again the missed portion",
+    "Land immediately and call ATC on the phone",
+    "Squawk 7600 and continue"
+  ]}
+  answer="Ask ATC to say again the missed portion"
+  explanation='Say "say again" (not "repeat") followed by what you missed. Example: "Ground, Cessna 123FS, say again the hold-short instruction." Never guess at an ATC clearance — an incorrect runway or hold-short could put you in conflict with other traffic. Squawk 7600 is for a complete radio failure, not a partial missed transmission.'
+  sources={[{ doc: "AIM", ref: "4-2-3" }]}
+/>
+
+</LessonLayout>

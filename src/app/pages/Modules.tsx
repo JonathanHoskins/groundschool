@@ -50,6 +50,13 @@ const MODULES = [
     lessonId: 'atc-basics',
     phase: 3,
   },
+  {
+    id: 'atc-scenario',
+    title: 'ATC Scenario — VFR Departure',
+    description: 'Fly a full scripted departure at Runway City Airport. ATIS → Ground → Tower → Departure. TTS voices the ATC side; typed readbacks are graded item by item.',
+    lessonId: 'atc-scenario',
+    phase: 3,
+  },
 ] as const
 
 export function Modules() {
