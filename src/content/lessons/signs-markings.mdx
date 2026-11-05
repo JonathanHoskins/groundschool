@@ -1,0 +1,214 @@
+---
+title: Airport Signs and Markings
+acsRefs:
+  - PA.I.D.K1
+  - PA.I.D.K2
+  - PA.I.D.K3
+sources:
+  - doc: AIM
+    ref: "Chapter 2 — Aeronautical Lighting and Airport Visual Aids"
+  - doc: AC 150/5340-18
+    ref: "Standards for Airport Sign Systems"
+  - doc: PHAK
+    ref: "Chapter 14 — Airport Operations"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { SignsTrainer } from '../../sims/airport/SignsTrainer'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acsRefs}
+  sources={frontmatter.sources}
+>
+
+## Why signs matter
+
+Runway incursions — unauthorized aircraft or vehicles on an active runway — are one of the leading contributors to fatal accidents in general aviation. The FAA classifies runway incursions by severity: Category A is a near-miss or collision; Category D is the most benign. Even a Category D event can spiral into a catastrophe in seconds.
+
+The airport sign system is your primary defense. Every color, shape, and position carries a legally-binding meaning. Getting it wrong is not an error in procedure — it may put your aircraft on an active runway in front of a landing jet.
+
+## The 6 sign types — quick reference
+
+| Type | Background | Text color | What it tells you |
+|---|---|---|---|
+| **Mandatory** | Red | White | You must take a specific action (hold short, no entry) |
+| **Location** | Black | Yellow | Where you ARE — current taxiway or runway |
+| **Direction** | Yellow | Black | Where to GO — intersection routing with arrows |
+| **Destination** | Yellow | Black | Route to a named area (FBO, terminal, runup) |
+| **Information** | Yellow | Black | Operational guidance (noise abatement, frequencies) |
+| **Distance Remaining** | Black | White | Runway distance left, in thousands of feet |
+
+The two easiest confusions are location vs. direction. The memory trick: **black tells you where you ARE, yellow tells you where to GO.** Location signs (black background) are mounted alongside a direction sign at intersections so you always know both simultaneously.
+
+## Mandatory signs in depth
+
+Mandatory signs are the most critical category. You will encounter them in four situations:
+
+1. **Runway hold-short bars** — the sign matches the runway designation you are approaching (e.g., "18-36"). The associated pavement markings are four yellow lines (two solid, two dashed). The solid lines face you — you stop before them.
+2. **ILS critical area boundaries** — marked "ILS" or "CRITICAL AREA." Do not enter when the ILS is in use unless cleared.
+3. **No entry signs** — a solid red sign with white horizontal bar: do not enter.
+4. **Runway approach area signs** — indicate areas where entry requires ATC clearance even if no hold-short bars are painted.
+
+The absolute rule: **never cross a hold-short line without an explicit ATC clearance, and always read back every runway hold-short instruction.** No exception. If ATC says "taxi to runway 18 via Alpha," that instruction does not include crossing runway 9/27 — it means hold short of 9/27 and wait for a separate crossing clearance.
+
+## Location vs. Direction signs
+
+At most intersections you will see a combined sign post with both types:
+
+- The **location sign** (black background, yellow text) is on the right side of the post. It shows where you currently are.
+- The **direction sign** (yellow background, black text, with arrows) is on the left side. It shows available routes.
+
+Arrows on direction signs point in the direction you must turn to reach that taxiway or runway. An arrow pointing left means turn left; straight arrow means continue ahead.
+
+**Destination signs** use the same color scheme as direction signs but point to named locations rather than taxiway designators. Common examples: FBO, RAMP, CARGO, TERMINAL. They include a straight arrow or angled arrow.
+
+## Distance remaining markers
+
+Distance remaining signs sit alongside the runway edge, counting down from the far end. They show remaining landing or takeoff distance in **thousands of feet**. A "3" sign means 3,000 ft of pavement remains ahead. The last marker is "1" — only 1,000 ft left to stop or accelerate.
+
+These signs are especially important during rejected takeoffs and long landing rollouts. Knowing your aircraft's accelerate-stop distance and comparing it to the remaining markers is a real-time safety check.
+
+## Hotspot awareness at TEACH1
+
+Runway City Airport (TEACH1) has one designated hotspot:
+
+**HS1 — Taxiway Alpha crossing of Runway 09/27.** This area (nodes `twa_09_27_hs` through `twa_09_27_exit`) has a high risk of inadvertent runway incursion. When taxiing southbound on Alpha, you must stop at the hold-short bars for runway 9/27, obtain a crossing clearance, and verify the runway is clear before proceeding.
+
+Hotspot locations for real airports are published in the FAA Chart Supplement (formerly Airport/Facility Directory) and depicted on airport diagrams with a circled "HS" number. Brief yourself on hotspots before taxiing at any unfamiliar airport.
+
+## Interactive trainer
+
+The trainer below covers all six sign types. Use the **Reference** tab to study each type, then test yourself in **Drill** mode.
+
+<SignsTrainer />
+
+## Review questions
+
+<QuestionCard
+  id="sm-q1"
+  prompt="What background color indicates a mandatory sign?"
+  choices={["Yellow", "Black", "Red", "White"]}
+  answer="Red"
+  explanation="Mandatory signs have a red background with white text and border. They require a specific action — such as holding short of a runway. No other sign type uses a red background."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q2"
+  prompt="You see a black sign with yellow 'B' on the taxiway. What does it tell you?"
+  choices={[
+    "Turn toward Taxiway B",
+    "You are currently on Taxiway B",
+    "Taxiway B is ahead",
+    "Hold short of Taxiway B"
+  ]}
+  answer="You are currently on Taxiway B"
+  explanation="A black background with yellow text is a location sign. It tells you where you ARE — in this case, you are on Taxiway B. Direction signs (where to go) have a yellow background with black text."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q3"
+  prompt="What is the ONLY correct response when holding short of an active runway?"
+  choices={[
+    "Taxi across when the runway looks clear",
+    "Cross after completing your run-up checklist",
+    "Wait for explicit ATC clearance to cross",
+    "Cross if no traffic is on final within 5 miles"
+  ]}
+  answer="Wait for explicit ATC clearance to cross"
+  explanation="You must NEVER cross a hold-short line without explicit ATC clearance. Even if the runway looks clear, you must receive and read back a crossing clearance before proceeding. Visual checks are supplementary — not a substitute for clearance."
+  sources={[{ doc: "AIM", ref: "Section 2-3-5" }]}
+/>
+
+<QuestionCard
+  id="sm-q4"
+  prompt="A sign reads '36-18' in white text on a black background. What type of sign is this and what does it indicate?"
+  choices={[
+    "Mandatory — hold short of runway 36-18",
+    "Location — you are at the intersection of runways 36 and 18",
+    "Direction — runway 36-18 is to the right",
+    "Distance remaining — 3,618 ft of runway remains"
+  ]}
+  answer="Location — you are at the intersection of runways 36 and 18"
+  explanation="White text on black is a location sign. It indicates your current position — in this case, you are at or on runway 36/18. Compare this to a mandatory runway sign (white on red), which requires a hold-short action."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q5"
+  prompt="What does a yellow sign with black text and an arrow indicate?"
+  choices={[
+    "You are holding short of a runway",
+    "You are currently on that taxiway",
+    "A direction toward a taxiway, runway, or destination",
+    "A noise abatement area"
+  ]}
+  answer="A direction toward a taxiway, runway, or destination"
+  explanation="Yellow background with black text (and an arrow) is a direction sign. It tells you where to GO. The arrow shows which way to turn to reach the labeled taxiway or runway. Memory trick: yellow tells you where to go."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q6"
+  prompt="Distance remaining markers count down in what unit?"
+  choices={["Feet", "Meters", "Hundreds of feet", "Thousands of feet"]}
+  answer="Thousands of feet"
+  explanation="Distance remaining signs show remaining runway in thousands of feet. A '2' sign means 2,000 ft remain. The last sign is '1' (1,000 ft). These are critical during rejected takeoffs and long landing rollouts."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q7"
+  prompt="You are on Taxiway Alpha and see '9-27' in white on red. What must you do?"
+  choices={[
+    "Slow down and check for traffic",
+    "Stop and hold short — do not cross without ATC clearance",
+    "Cross if the runway is clear",
+    "Call ground and ask for a progressive taxi"
+  ]}
+  answer="Stop and hold short — do not cross without ATC clearance"
+  explanation="White on red is a mandatory sign. '9-27' means you are approaching the hold-short position for Runway 9/27. Stop before the hold-short bars and wait for an explicit ATC crossing clearance before entering the runway environment."
+  sources={[{ doc: "AIM", ref: "Section 2-3-5" }]}
+/>
+
+<QuestionCard
+  id="sm-q8"
+  prompt="What color is the border on a location sign?"
+  choices={["White", "Black", "Yellow", "Red"]}
+  answer="Yellow"
+  explanation="Location signs have a black background with yellow text AND a yellow border. The yellow border distinguishes them from other black-background signs like distance remaining markers (which have a white border)."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q9"
+  prompt="Where are ILS critical area signs typically found?"
+  choices={[
+    "Along the runway centerline",
+    "At the approach end of an ILS runway, near the hold-short bars",
+    "On the control tower",
+    "Only at Category III airports"
+  ]}
+  answer="At the approach end of an ILS runway, near the hold-short bars"
+  explanation="ILS critical area signs are mandatory signs placed near the hold-short position for runways with ILS approaches. They mark the boundary of the area where large vehicles can degrade the ILS signal. Pilots must hold short of these signs when ILS is in use, unless cleared."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }]}
+/>
+
+<QuestionCard
+  id="sm-q10"
+  prompt="What is a 'hotspot' and where can you find information about airport hotspots?"
+  choices={[
+    "A location with available Wi-Fi; found in the FBO directory",
+    "A high-temperature area on a runway; found in NOTAMs",
+    "A complex or confusing area with elevated risk of runway incursion; found in the FAA Chart Supplement and airport diagrams",
+    "An area prone to wake turbulence; found in the AIM"
+  ]}
+  answer="A complex or confusing area with elevated risk of runway incursion; found in the FAA Chart Supplement and airport diagrams"
+  explanation="Hotspots are locations on the airport movement area with a history of runway incursions or other incidents. They are numbered (HS1, HS2, etc.), described in the FAA Chart Supplement, and depicted on official airport diagrams. Brief yourself on them before taxiing at any unfamiliar airport."
+  sources={[{ doc: "AIM", ref: "Section 2-3-8" }, { doc: "PHAK", ref: "Chapter 14" }]}
+/>
+
+</LessonLayout>

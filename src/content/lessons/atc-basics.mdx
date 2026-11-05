@@ -1,0 +1,257 @@
+---
+title: ATC Communications Basics
+phase: 3
+acs:
+  - PA.I.F.K1
+  - PA.I.F.K2
+  - PA.I.F.K3
+description: How to communicate on the radio before your first lesson — phonetic alphabet, number pronunciation, the four-part call structure, and what to read back.
+estimatedMinutes: 30
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { PhoneticDrill } from '../../sims/atc/PhoneticDrill'
+import { CallBuilder } from '../../sims/atc/CallBuilder'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acs}
+>
+
+## Why radio skills matter before your first lesson
+
+Aviation radio communication feels intimidating at first. The pace is fast, the vocabulary is unfamiliar, and everyone on the frequency sounds like they have been doing it forever. The good news: the patterns are rigid and predictable. Once you internalize the four-part structure and can say the phonetic alphabet without thinking, 80 percent of the anxiety disappears.
+
+You do not need to be perfect before your first flight lesson — your instructor will handle the radios if necessary. But knowing the basics means you can listen to what is happening, understand ATC instructions, and start building the muscle memory early. Radio proficiency compounds: every hour you spend listening to LiveATC before you ever sit in a cockpit is worth it.
+
+## The phonetic alphabet
+
+ICAO (the International Civil Aviation Organization) standardized a phonetic alphabet so that letters cannot be misheard over a noisy radio. "N" and "M" sound alike; "November" and "Mike" do not.
+
+You will use it constantly: spelling your callsign, taxiway names, waypoints, and more. The goal is to say the words reflexively — when ATC says "taxi via Alpha Bravo," you should know immediately that means taxiways A and B.
+
+Drill the alphabet now. Click each card to reveal the word, then mark whether you got it:
+
+<PhoneticDrill />
+
+## How aviation numbers are spoken
+
+Aviation uses a modified pronunciation for digits to prevent mishearing over noisy radios. The critical ones:
+
+| Digit | Aviation pronunciation |
+|-------|------------------------|
+| 0 | ZERO |
+| 1 | WUN |
+| 2 | TOO |
+| 3 | TREE |
+| 4 | FOWER |
+| 5 | FIFE |
+| 6 | SIX |
+| 7 | SEVEN |
+| 8 | AIT |
+| 9 | NINER |
+
+The word "niner" (not "nine") avoids confusion with the German word "nein," which means "no." During early transatlantic aviation, this distinction mattered enormously.
+
+**How numbers are grouped depends on context:**
+
+- **Frequencies** — Each digit separately, with "POINT" for the decimal. 121.6 MHz = "ONE TWO ONE POINT SIX."
+- **Altitudes** — Thousands and hundreds. 5,500 ft = "FIVE THOUSAND FIVE HUNDRED."
+- **Headings** — Each digit separately. Runway 18 heading = "ONE EIGHT ZERO."
+- **Transponder codes** — Each digit separately. Code 1200 = "ONE TWO ZERO ZERO."
+- **Runway numbers** — Each digit separately. Runway 27 = "TWO SEVEN."
+
+Use the Numbers tab in the drill above to practice these.
+
+## The four-part call structure
+
+Every initial radio call follows the same four-part pattern:
+
+1. **Who you are calling** — the ATC facility
+2. **Who you are** — your callsign
+3. **Where you are** — your position
+4. **What you want** — your request
+
+This order is not arbitrary. ATC controllers are managing multiple frequencies and aircraft. Hearing the facility name first confirms the call is for them. Hearing your callsign second lets them pull up your information. Hearing your position and request last means they have context before they respond.
+
+A complete ground call looks like this:
+
+> "Runway City Ground, Cessna One Two Three Foxtrot Sierra, FBO ramp, request taxi to Runway One Eight, VFR departure to the north."
+
+Build your first call below:
+
+<CallBuilder />
+
+## What to read back
+
+A **readback** is your confirmation that you copied an ATC instruction correctly. It is not optional — FAR 91.123 requires you to comply with ATC instructions, and reading back clearances is how ATC confirms you understood correctly.
+
+**Always read back:**
+- Runway assignments ("cleared for takeoff Runway One Eight")
+- Hold-short instructions ("hold short of Runway Zero Nine Two Seven")
+- Squawk codes ("squawk four five two one")
+- Altimeter settings ("altimeter two niner niner two")
+- Frequency changes ("contact Approach on one two four point four")
+- Altitude assignments on IFR clearances
+
+**You do NOT need to read back:**
+- Taxi routes (unless you are unsure)
+- General advisories ("traffic in the area, please advise")
+- ATIS acknowledgement callsigns alone
+
+A correct readback for a taxi clearance sounds like:
+
+> "Taxi via Alpha, hold short of Runway Zero Nine Two Seven, Cessna One Two Three Foxtrot Sierra."
+
+Note that your callsign comes at the **end** of a readback — the reverse of an initial call. This convention lets the controller know who is reading back.
+
+If you miss something in a clearance, say **"say again"** — never "what?" or "huh?" Partial readbacks are acceptable; always read back what you heard and ask the controller to repeat any portion you missed.
+
+## Class D airspace and two-way communication
+
+Most training airports have an operating control tower, which means they are surrounded by **Class D airspace**. The key rule for Class D:
+
+> You must establish **two-way radio communication** with the tower **before entering** the Class D airspace. (AIM 3-2-5)
+
+"Establishing two-way communication" means ATC has acknowledged your callsign by name. If the controller says "aircraft calling, standby," that is **not** two-way communication — they did not use your callsign. You must wait until they say your callsign before entering.
+
+Class D typically extends from the surface to 2,500 ft AGL and has a radius that varies by airport. The boundaries are shown as a dashed blue circle on sectional charts.
+
+When the control tower is closed, Class D ceases to exist. The airspace reverts to Class E or G (check the Chart Supplement for specifics). No radio contact is then required, though self-announcing on CTAF is strongly recommended.
+
+**ATIS — Automatic Terminal Information Service:** Before calling ground or clearance delivery, listen to ATIS (a recorded broadcast of current weather, active runways, and NOTAMs). When you call, acknowledge it with "information [phonetic letter]" — for example, "information Bravo." This tells the controller you have the current weather and they do not need to repeat it.
+
+## Review questions
+
+<QuestionCard
+  id="atc-q1"
+  prompt='What word represents the letter "N" in the ICAO phonetic alphabet?'
+  choices={["Nancy", "November", "Neptune", "Normal"]}
+  answer="November"
+  explanation='The letter N is "November" in the ICAO phonetic alphabet. All 26 letters have standardized words chosen to be distinct when spoken over noisy radio channels.'
+  sources={[{ doc: "AIM", ref: "Section 4-2-7" }]}
+/>
+
+<QuestionCard
+  id="atc-q2"
+  prompt='How do you say the digit "9" in aviation radio communications?'
+  choices={["Nine", "Niner", "Nueve", "Neun"]}
+  answer="Niner"
+  explanation='"Niner" is used to prevent confusion with the German word "nein" (no). This distinction became standardized in international aviation to avoid potentially catastrophic misunderstandings.'
+  sources={[{ doc: "AIM", ref: "Section 4-2-7" }]}
+/>
+
+<QuestionCard
+  id="atc-q3"
+  prompt="What are the four parts of a standard initial radio call?"
+  choices={[
+    "Callsign, altitude, heading, request",
+    "Who you are calling, who you are, where you are, what you want",
+    "Facility, weather, position, clearance",
+    "Aircraft type, N-number, departure airport, destination"
+  ]}
+  answer="Who you are calling, who you are, where you are, what you want"
+  explanation="Every initial radio call follows this four-part structure: (1) the facility you are calling, (2) your callsign, (3) your position, and (4) your request. This order gives ATC the information they need in the most efficient sequence."
+  sources={[{ doc: "AIM", ref: "Section 4-2-3" }]}
+/>
+
+<QuestionCard
+  id="atc-q4"
+  prompt="When must you establish two-way communication with ATC before entering Class D airspace?"
+  choices={[
+    "Only when the ceiling is below 1,000 feet",
+    "Before entering the Class D airspace boundary",
+    "Only when requesting a landing clearance",
+    "Within 5 miles of the airport"
+  ]}
+  answer="Before entering the Class D airspace boundary"
+  explanation="FAR 91.129 and AIM 3-2-5 require that two-way radio communication be established before entering Class D airspace. Two-way communication means ATC has acknowledged your callsign — not just told you to standby."
+  sources={[{ doc: "AIM", ref: "Section 3-2-5" }]}
+/>
+
+<QuestionCard
+  id="atc-q5"
+  prompt='You receive: "Cessna 123FS, Runway City Ground, taxi to Runway 18 via Alpha, hold short of Runway 09/27." What MUST be in your readback?'
+  choices={[
+    "Only your callsign",
+    "Runway 18 and hold short of Runway 09/27",
+    "The full taxi route and altimeter setting",
+    "Nothing — taxi instructions do not require a readback"
+  ]}
+  answer="Runway 18 and hold short of Runway 09/27"
+  explanation="Runway assignments and hold-short instructions are always required readback items. The hold-short instruction is especially critical — runway incursions are among the most dangerous incidents in aviation."
+  sources={[{ doc: "AIM", ref: "Section 4-3-18" }]}
+/>
+
+<QuestionCard
+  id="atc-q6"
+  prompt="What does 'readback' mean and why is it required?"
+  choices={[
+    "Repeating the entire ATIS broadcast back to ATC",
+    "Your verbal confirmation of an ATC instruction, allowing the controller to verify you understood correctly",
+    "Filing a pilot report (PIREP) after a flight",
+    "Requesting ATC to repeat an instruction you missed"
+  ]}
+  answer="Your verbal confirmation of an ATC instruction, allowing the controller to verify you understood correctly"
+  explanation="A readback is the pilot repeating key elements of an ATC clearance or instruction. It creates a closed-loop communication: ATC transmits, pilot reads back, ATC corrects any errors. This two-way verification prevents misunderstandings that could lead to runway incursions or controlled flight into terrain."
+  sources={[{ doc: "AIM", ref: "Section 4-2-3" }]}
+/>
+
+<QuestionCard
+  id="atc-q7"
+  prompt='How do you say the frequency "121.6" over the radio?'
+  choices={[
+    "One twenty-one point six",
+    "One two one decimal six",
+    "One two one point six",
+    "One-twenty-one-six"
+  ]}
+  answer="One two one point six"
+  explanation='Frequencies are spoken digit-by-digit with "point" for the decimal. 121.6 = "ONE TWO ONE POINT SIX." Never say "decimal" — always "point." Never group digits into hundreds or thousands.'
+  sources={[{ doc: "AIM", ref: "Section 4-2-7" }]}
+/>
+
+<QuestionCard
+  id="atc-q8"
+  prompt="If you are unsure you copied an instruction correctly, what should you do?"
+  choices={[
+    'Say "what?" and wait for ATC to repeat',
+    'Say "say again" and ask ATC to repeat the portion you missed',
+    "Continue flying and assume you heard correctly",
+    "Declare an emergency"
+  ]}
+  answer='"Say again" and ask ATC to repeat the portion you missed'
+  explanation='"Say again" is the correct phraseology for requesting a repetition. Never say "what?" or "huh?" — these are not standard aviation radio terms. You can be specific: "Say again the runway assignment" to avoid a full re-read of a long clearance.'
+  sources={[{ doc: "AIM", ref: "Section 4-2-3" }]}
+/>
+
+<QuestionCard
+  id="atc-q9"
+  prompt="What is ATIS and when should you get it?"
+  choices={[
+    "Air Traffic Information System — listen only after landing",
+    "Automatic Terminal Information Service — listen before calling ground or clearance delivery",
+    "Aviation Terminal Identification Signal — required only for IFR flights",
+    "Automated Traffic and Information System — listen only in Class B airspace"
+  ]}
+  answer="Automatic Terminal Information Service — listen before calling ground or clearance delivery"
+  explanation="ATIS is a continuous recorded broadcast of current weather, active runways, NOTAMs, and other airport information. You should listen to ATIS before your first radio call and acknowledge it by saying 'information [phonetic letter]' when you call ground or clearance delivery."
+  sources={[{ doc: "AIM", ref: "Section 4-1-13" }]}
+/>
+
+<QuestionCard
+  id="atc-q10"
+  prompt='How do you spell your callsign "N123FS" using the phonetic alphabet?'
+  choices={[
+    "November One Two Three Foxtrot Sierra",
+    "Nancy One Two Three Fox Sierra",
+    "November 123 Fox-trot Sierra",
+    "Niner One Two Three Foxtrot Sierra"
+  ]}
+  answer="November One Two Three Foxtrot Sierra"
+  explanation='"N" = November, digits 1, 2, 3 are spoken individually, "F" = Foxtrot, "S" = Sierra. Full callsign: "November One Two Three Foxtrot Sierra." On subsequent calls after ATC has identified you, you may shorten it to the last three: "Three Foxtrot Sierra."'
+  sources={[{ doc: "AIM", ref: "Section 4-2-4" }]}
+/>
+
+</LessonLayout>

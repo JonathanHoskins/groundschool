@@ -29,6 +29,27 @@ const MODULES = [
     lessonId: 'airspace',
     phase: 1,
   },
+  {
+    id: 'signs-markings',
+    title: 'Airport Signs & Markings',
+    description: 'Learn all 6 sign types (mandatory, location, direction, destination, information, distance remaining) with an interactive drill.',
+    lessonId: 'signs-markings',
+    phase: 2,
+  },
+  {
+    id: 'taxi',
+    title: 'Airport Surface Operations',
+    description: 'Trace taxi routes on a fictional airport diagram given ATC clearances. Flags unauthorized runway crossings and missed hold-short instructions.',
+    lessonId: 'taxi',
+    phase: 2,
+  },
+  {
+    id: 'atc-basics',
+    title: 'ATC Communications Basics',
+    description: 'Phonetic alphabet drill, aviation number pronunciation, the four-part call structure, and what to read back. 10 questions.',
+    lessonId: 'atc-basics',
+    phase: 3,
+  },
 ] as const
 
 export function Modules() {

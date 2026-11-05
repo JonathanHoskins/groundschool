@@ -1,0 +1,101 @@
+{
+  "id": "TEACH1",
+  "name": "Runway City Airport",
+  "elevationFt": 682,
+  "towered": true,
+  "airspaceClass": "D",
+  "frequencies": [
+    { "kind": "ATIS", "mhz": "118.05" },
+    { "kind": "GND",  "mhz": "121.60" },
+    { "kind": "TWR",  "mhz": "118.40" }
+  ],
+  "nodes": [
+    { "id": "rwy18_thr",       "x": 500, "y":  80, "kind": "runwayEntry" },
+    { "id": "rwy36_thr",       "x": 500, "y": 720, "kind": "runwayEntry" },
+    { "id": "rwy09_thr",       "x":  80, "y": 400, "kind": "runwayEntry" },
+    { "id": "rwy27_thr",       "x": 920, "y": 400, "kind": "runwayEntry" },
+    { "id": "rwy_int",         "x": 500, "y": 400, "kind": "intersection" },
+    { "id": "twa_hs_18",       "x": 650, "y": 130, "kind": "holdShort", "holdShortFor": "18/36" },
+    { "id": "twa_n_mid",       "x": 650, "y": 290, "kind": "intersection" },
+    { "id": "twa_09_27_hs",    "x": 650, "y": 350, "kind": "holdShort",  "holdShortFor": "09/27" },
+    { "id": "twa_09_27_cross", "x": 650, "y": 400, "kind": "intersection" },
+    { "id": "twa_09_27_exit",  "x": 650, "y": 452, "kind": "intersection" },
+    { "id": "twa_c_jct",       "x": 650, "y": 560, "kind": "intersection" },
+    { "id": "twa_hs_36",       "x": 650, "y": 668, "kind": "holdShort",  "holdShortFor": "18/36" },
+    { "id": "twb_hs_1836",     "x": 548, "y": 400, "kind": "holdShort",  "holdShortFor": "18/36" },
+    { "id": "twc_w",           "x": 400, "y": 560, "kind": "intersection" },
+    { "id": "twc_e",           "x": 820, "y": 560, "kind": "intersection" },
+    { "id": "runup_18",        "x": 720, "y": 160, "kind": "runup" },
+    { "id": "runup_36",        "x": 720, "y": 680, "kind": "runup" },
+    { "id": "fbo",             "x": 840, "y": 480, "kind": "fbo" },
+    { "id": "parking",         "x": 760, "y": 290, "kind": "parking" }
+  ],
+  "edges": [
+    { "id": "rwy1836_n",      "from": "rwy18_thr",       "to": "rwy_int",         "kind": "runway",  "runwayId": "18/36" },
+    { "id": "rwy1836_s",      "from": "rwy_int",         "to": "rwy36_thr",       "kind": "runway",  "runwayId": "18/36" },
+    { "id": "rwy0927_w",      "from": "rwy09_thr",       "to": "rwy_int",         "kind": "runway",  "runwayId": "09/27" },
+    { "id": "rwy0927_e",      "from": "rwy_int",         "to": "rwy27_thr",       "kind": "runway",  "runwayId": "09/27" },
+    { "id": "twa_n1",         "from": "twa_hs_18",       "to": "twa_n_mid",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "twa_n2",         "from": "twa_n_mid",       "to": "twa_09_27_hs",    "kind": "taxiway", "taxiway": "A" },
+    { "id": "twa_cross_in",   "from": "twa_09_27_hs",    "to": "twa_09_27_cross", "kind": "runway",  "runwayId": "09/27" },
+    { "id": "twa_cross_out",  "from": "twa_09_27_cross", "to": "twa_09_27_exit",  "kind": "runway",  "runwayId": "09/27" },
+    { "id": "twa_s1",         "from": "twa_09_27_exit",  "to": "twa_c_jct",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "twa_s2",         "from": "twa_c_jct",       "to": "twa_hs_36",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "twb_1",          "from": "twa_09_27_cross", "to": "twb_hs_1836",     "kind": "taxiway", "taxiway": "B" },
+    { "id": "twb_2",          "from": "twb_hs_1836",     "to": "rwy_int",         "kind": "runway",  "runwayId": "18/36" },
+    { "id": "twc_w1",         "from": "twc_w",           "to": "twa_c_jct",       "kind": "taxiway", "taxiway": "C" },
+    { "id": "twc_e1",         "from": "twa_c_jct",       "to": "twc_e",           "kind": "taxiway", "taxiway": "C" },
+    { "id": "runup18_link",   "from": "runup_18",        "to": "twa_hs_18",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "runup36_link",   "from": "runup_36",        "to": "twa_hs_36",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "parking_link",   "from": "parking",         "to": "twa_n_mid",       "kind": "taxiway", "taxiway": "A" },
+    { "id": "fbo_link",       "from": "fbo",             "to": "twc_e",           "kind": "taxiway", "taxiway": "C" }
+  ],
+  "runways": [
+    {
+      "id": "18/36",
+      "ends": [
+        { "designator": "18", "thresholdNode": "rwy18_thr", "headingMag": 180 },
+        { "designator": "36", "thresholdNode": "rwy36_thr", "headingMag": 360 }
+      ],
+      "lengthFt": 4000,
+      "widthFt": 75
+    },
+    {
+      "id": "09/27",
+      "ends": [
+        { "designator": "09", "thresholdNode": "rwy09_thr", "headingMag": 90 },
+        { "designator": "27", "thresholdNode": "rwy27_thr", "headingMag": 270 }
+      ],
+      "lengthFt": 2800,
+      "widthFt": 60
+    }
+  ],
+  "signs": [
+    { "id": "s_m_18",      "nodeId": "twa_hs_18",       "facingDeg": 180, "kind": "mandatory",         "text": "18" },
+    { "id": "s_m_0927",    "nodeId": "twa_09_27_hs",    "facingDeg": 180, "kind": "mandatory",         "text": "9-27" },
+    { "id": "s_m_1836_b",  "nodeId": "twb_hs_1836",     "facingDeg": 270, "kind": "mandatory",         "text": "18-36" },
+    { "id": "s_m_36",      "nodeId": "twa_hs_36",       "facingDeg": 0,   "kind": "mandatory",         "text": "36" },
+    { "id": "s_l_a1",      "nodeId": "twa_n_mid",       "facingDeg": 180, "kind": "location",          "text": "A" },
+    { "id": "s_l_a2",      "nodeId": "twa_09_27_exit",  "facingDeg": 180, "kind": "location",          "text": "A" },
+    { "id": "s_l_b",       "nodeId": "twb_hs_1836",     "facingDeg": 180, "kind": "location",          "text": "B" },
+    { "id": "s_l_c",       "nodeId": "twa_c_jct",       "facingDeg": 90,  "kind": "location",          "text": "C" },
+    { "id": "s_d_ab",      "nodeId": "twa_09_27_cross", "facingDeg": 270, "kind": "direction",         "text": "B 18/36" },
+    { "id": "s_d_ac",      "nodeId": "twa_c_jct",       "facingDeg": 180, "kind": "direction",         "text": "C" },
+    { "id": "s_dest_fbo",  "nodeId": "twc_e",           "facingDeg": 90,  "kind": "destination",       "text": "FBO" },
+    { "id": "s_dest_run",  "nodeId": "twa_n_mid",       "facingDeg": 0,   "kind": "destination",       "text": "RUNUP" },
+    { "id": "s_info_1",    "nodeId": "rwy27_thr",       "facingDeg": 270, "kind": "information",       "text": "NOISE ABATEMENT: NO TOUCH-AND-GO" },
+    { "id": "s_dr_2",      "nodeId": "rwy_int",         "facingDeg": 0,   "kind": "distanceRemaining", "text": "2" },
+    { "id": "s_dr_1",      "nodeId": "twa_hs_18",       "facingDeg": 0,   "kind": "distanceRemaining", "text": "1" }
+  ],
+  "hotspots": [
+    {
+      "id": "HS1",
+      "nodeIds": ["twa_09_27_hs", "twa_09_27_cross", "twa_09_27_exit"],
+      "description": "Hotspot 1: Taxiway A crossing of Runway 09/27. High risk of inadvertent runway incursion. Verify crossing clearance before proceeding."
+    }
+  ],
+  "localRules": [
+    "Read back all runway hold-short instructions.",
+    "No touch-and-go operations on Runway 09/27."
+  ]
+}

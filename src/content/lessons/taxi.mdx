@@ -1,0 +1,225 @@
+---
+title: Airport Surface Operations
+acsRefs:
+  - PA.I.D.K1
+  - PA.I.D.K2
+sources:
+  - doc: AIM
+    ref: "Chapter 4 — Air Traffic Control"
+  - doc: FAA-H-8083-25
+    ref: "Chapter 14 — Airport Operations"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { TaxiTracer } from '../../sims/airport/TaxiTracer'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acsRefs}
+  sources={frontmatter.sources}
+>
+
+## Why surface operations matter
+
+Runway incursions — an aircraft, vehicle, or person entering a runway without authorization — are the leading cause of fatal accidents at towered airports. The FAA's Runway Safety Program exists specifically to reduce these events, and the numbers still run into the hundreds each year. Most incursions are not caused by reckless pilots; they are caused by distraction, misunderstood clearances, and complacency on "routine" taxi operations.
+
+The FAA maintains a list of **runway safety hotspots** at complex airports — locations historically prone to confusion, poor sight lines, or clearance ambiguity. These hotspots appear on FAA airport diagrams (and in ForeFlight and Garmin Pilot) as numbered circles. Knowing they exist is the first step; understanding *why* a given intersection is dangerous is what changes behavior.
+
+Surface operations demand the same discipline as airborne operations. Brief every taxi clearance before you release the brakes.
+
+## Know before you go
+
+Before calling ground, have three things ready:
+
+1. **ATIS** — Active runways, NOTAMs, weather, and altimeter. The ATIS also tells you which taxiways may be closed. Write down the information code.
+2. **Airport diagram** — Available in ForeFlight, Garmin Pilot, and the FAA Chart Supplement. Study it on the ground, not while moving. Know where you are parked, where the runway is, and what taxiways connect them.
+3. **A pencil** — Write down your taxi clearance as you receive it. At complex airports, clearances can be long. Reading it back from your notes is faster and more accurate than reading it back from memory.
+
+The goal is to build a **mental map** before you move. Taxi operations at an unfamiliar airport should feel like a planned route, not an improvised drive.
+
+## Standard taxi clearance anatomy
+
+Every taxi clearance from Ground follows a predictable structure:
+
+> **[Callsign], [Facility], taxi to [Runway] via [Taxiways], [any crossing or hold-short instructions].**
+
+Example:
+> *"November One Two Three Foxtrot Sierra, Runway City Ground, taxi to Runway One Eight via Alpha, hold short of Runway Zero-Niner Two-Seven."*
+
+Break it into parts as you hear it:
+
+| Element | Example | What to do |
+|---|---|---|
+| Callsign | N123FS | Confirm it's you |
+| Destination runway | Runway 18 | Write it down |
+| Route | via Alpha | Trace it on your diagram |
+| Crossing / hold-short | hold short of 09/27 | **Read back explicitly** |
+
+## The critical rule: runway entry requires explicit authorization
+
+This rule is unambiguous: **you may not enter or cross a runway without an explicit ATC clearance to do so.**
+
+Hold-short bars (four yellow lines — two solid, two dashed — painted across a taxiway) are **absolute stop points**. Coming to a complete stop before those bars is not optional. Even if you can see clearly that the runway is empty, even if you are behind schedule, even if another aircraft is waiting behind you — you stop.
+
+**Read back ALL runway assignments and hold-short instructions.** This is an FAA regulatory requirement (AIM 4-3-18). The readback is not a formality; it is a cross-check that confirms ATC and pilot have the same understanding. If your readback contains an error, ATC will correct you before you move.
+
+When in doubt, **stop and ask**. Calling ground to confirm your position or ask for progressive taxi instructions is never the wrong move. Controllers prefer the call.
+
+## Hotspots
+
+A **runway safety hotspot** is a location on an airport surface where the risk of runway incursion or surface incident is elevated. The FAA designates hotspots based on accident history, operational complexity, or geometry that is prone to confusion.
+
+Hotspots appear on FAA airport diagrams as pink or red circles labeled HS1, HS2, etc. Each hotspot has a written description in the Chart Supplement (formerly the Airport/Facility Directory) explaining the specific risk. ForeFlight and Garmin Pilot display hotspot overlays in their moving map views.
+
+Before taxiing at an unfamiliar towered airport, check the airport diagram for hotspot locations and read the descriptions. At the fictional Runway City Airport used in this lesson, **HS1** marks the Taxiway A crossing of Runway 09/27 — a crossing that requires an explicit clearance and where the runway is not visible from the hold-short line until you are very close.
+
+## Practice scenarios
+
+Practice the scenarios below. Tap nodes on the airport diagram to trace your intended taxi route, then press **Check Route** to validate your path against the ATC clearance.
+
+<TaxiTracer />
+
+## Review questions
+
+<QuestionCard
+  id="taxi-q1"
+  prompt='You receive: "Taxi to Runway 18 via Alpha." You are at the FBO, south of Runway 09/27. Must you get explicit authorization before crossing Runway 09/27?'
+  choices={[
+    "No — the routing implies a crossing",
+    "Yes — a runway crossing requires an explicit clearance",
+    "Only if the runway is active",
+    "Only at night or in low visibility"
+  ]}
+  answer="Yes — a runway crossing requires an explicit clearance"
+  explanation="A runway crossing is never implied. The clearance 'taxi to Runway 18 via Alpha' authorizes you to taxi on Taxiway Alpha, but it does NOT authorize you to cross Runway 09/27. You must hold short and request a crossing clearance, or the original clearance must explicitly include the words 'cross Runway 09/27.'"
+  sources={[{ doc: "AIM", ref: "Section 4-3-18" }]}
+/>
+
+<QuestionCard
+  id="taxi-q2"
+  prompt="What are the yellow lines painted on the pavement before a runway called, and what do they mean?"
+  choices={[
+    "Runway edge markings — stay between them",
+    "Hold-short bars — stop before crossing them without a clearance",
+    "Taxiway centerline — follow them to the runway",
+    "ILS critical area markings — avoid only during approaches"
+  ]}
+  answer="Hold-short bars — stop before crossing them without a clearance"
+  explanation="The runway hold-short position markings consist of four yellow lines (two solid, two dashed) painted across a taxiway. They mark the boundary between the taxiway and the runway safety area. You must stop before them and may not proceed onto the runway without an explicit ATC clearance."
+  sources={[{ doc: "FAA-H-8083-25", ref: "Chapter 14" }]}
+/>
+
+<QuestionCard
+  id="taxi-q3"
+  prompt="What items MUST be read back in a taxi clearance?"
+  choices={[
+    "Only the destination runway",
+    "All runway assignments and hold-short instructions",
+    "The full clearance, word for word",
+    "Only the hold-short instructions"
+  ]}
+  answer="All runway assignments and hold-short instructions"
+  explanation="Per AIM 4-3-18, pilots are required to read back all runway assignments and hold-short instructions. The readback allows the controller to catch any misunderstanding before the aircraft moves. While reading back the full clearance is good practice, the regulatory requirement specifically covers runway assignments and hold-short clearances."
+  sources={[{ doc: "AIM", ref: "Section 4-3-18" }]}
+/>
+
+<QuestionCard
+  id="taxi-q4"
+  prompt='ATC says "hold short of Runway 36." You reach the hold-short bars. What do you do?'
+  choices={[
+    "Stop before the hold-short bars and wait for a crossing or takeoff clearance",
+    "Stop briefly, check for traffic, then proceed if clear",
+    "Taxi slowly across since you have been given a taxi clearance",
+    "Call ground to confirm once you are on the runway"
+  ]}
+  answer="Stop before the hold-short bars and wait for a crossing or takeoff clearance"
+  explanation="A hold-short instruction requires you to stop before the hold-short bars and remain stopped until ATC explicitly clears you to cross or take off. Seeing that the runway appears empty does not constitute a clearance. You must wait for explicit words such as 'cleared to cross' or 'cleared for takeoff.'"
+  sources={[{ doc: "AIM", ref: "Section 4-3-18" }]}
+/>
+
+<QuestionCard
+  id="taxi-q5"
+  prompt="What is a 'hotspot' on an airport diagram?"
+  choices={[
+    "A WiFi zone in the terminal area",
+    "A location with elevated risk of runway incursion or surface incident",
+    "A short-field takeoff performance zone",
+    "An area where fuel is available"
+  ]}
+  answer="A location with elevated risk of runway incursion or surface incident"
+  explanation="FAA runway safety hotspots are designated locations on the airport surface where history, geometry, or sight-line issues create elevated incursion or incident risk. They appear as numbered circles on FAA airport diagrams and are described in the Chart Supplement. Pilots should review hotspot descriptions before taxiing at an unfamiliar airport."
+  sources={[{ doc: "AIM", ref: "Section 4-3-10" }]}
+/>
+
+<QuestionCard
+  id="taxi-q6"
+  prompt="Where should you write down or memorize your taxi clearance?"
+  choices={[
+    "Before releasing the brakes to begin taxiing",
+    "After reaching the runway hold-short line",
+    "Only for complex airports with more than two taxiways",
+    "In the air before landing"
+  ]}
+  answer="Before releasing the brakes to begin taxiing"
+  explanation="Write down the taxi clearance as you receive it, before you release the parking brake. Once moving, your workload increases and the opportunity to accurately transcribe the clearance is gone. Many incursions stem from pilots who thought they remembered the clearance but had it wrong."
+  sources={[{ doc: "FAA-H-8083-25", ref: "Chapter 14" }]}
+/>
+
+<QuestionCard
+  id="taxi-q7"
+  prompt="What information does ATIS provide?"
+  choices={[
+    "Traffic advisories for aircraft in the pattern only",
+    "Active runways, weather, altimeter setting, NOTAMs, and other operational information",
+    "Fuel prices and FBO hours",
+    "IFR clearances and departure procedures"
+  ]}
+  answer="Active runways, weather, altimeter setting, NOTAMs, and other operational information"
+  explanation="ATIS (Automatic Terminal Information Service) is a continuous broadcast of non-control information at busy airports. It includes the current weather, active runways, altimeter setting, NOTAMs affecting the airport, and special procedures in effect. Each recording is identified by a phonetic letter (Alpha, Bravo, etc.). Pilots are expected to have the current ATIS before contacting ATC."
+  sources={[{ doc: "AIM", ref: "Section 4-1-13" }]}
+/>
+
+<QuestionCard
+  id="taxi-q8"
+  prompt="Can you read back only part of a taxi clearance if it was long?"
+  choices={[
+    "Yes — just read back the runway and hold-short instructions",
+    "Yes — read back whatever you can remember",
+    "No — read back the complete clearance, including taxiway routing",
+    "No — only runway assignments and hold-short instructions are required, but reading the full route is best practice"
+  ]}
+  answer="No — only runway assignments and hold-short instructions are required, but reading the full route is best practice"
+  explanation="The regulatory requirement is to read back runway assignments and hold-short instructions. However, reading back the full routing (taxiways) is strongly recommended — it gives the controller an opportunity to catch errors in the route and helps you lock the route into memory. If the clearance was confusing, ask ATC to repeat it; do not guess."
+  sources={[{ doc: "AIM", ref: "Section 4-3-18" }]}
+/>
+
+<QuestionCard
+  id="taxi-q9"
+  prompt="What should you do if you become disoriented on the airport surface?"
+  choices={[
+    "Continue taxiing and call ground once you identify your position",
+    "Stop in a safe area and contact ground control immediately",
+    "Return to the ramp without notifying ATC",
+    "Turn off the transponder to avoid ATC attention"
+  ]}
+  answer="Stop in a safe area and contact ground control immediately"
+  explanation="If you become disoriented, stop (in a safe area away from active runways), tell ATC you need progressive taxi instructions, and give them your best description of where you are. Progressive taxi instructions are step-by-step directions from the controller. Controllers are trained to help; notifying them quickly prevents a potential incursion."
+  sources={[{ doc: "AIM", ref: "Section 4-3-10" }]}
+/>
+
+<QuestionCard
+  id="taxi-q10"
+  prompt='What does it mean when ATC says "line up and wait, Runway 18"?'
+  choices={[
+    "Cleared for takeoff on Runway 18",
+    "Taxi to Runway 18 and hold short",
+    "Enter Runway 18 and hold in position — takeoff clearance not yet issued",
+    "Cross Runway 18 and hold on the other side"
+  ]}
+  answer="Enter Runway 18 and hold in position — takeoff clearance not yet issued"
+  explanation="'Line up and wait' (LUAW) authorizes the pilot to enter the runway and taxi to the takeoff position, but it is NOT a takeoff clearance. The pilot must hold on the runway and wait for a separate 'cleared for takeoff' instruction. LUAW does not authorize departure. Never depart on a LUAW instruction alone."
+  sources={[{ doc: "AIM", ref: "Section 4-3-19" }]}
+/>
+
+</LessonLayout>
