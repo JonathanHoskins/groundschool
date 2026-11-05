@@ -1,0 +1,232 @@
+---
+title: Aerodynamics Explorer
+acsRefs:
+  - PA.I.F.K1
+  - PA.I.F.K2
+sources:
+  - doc: PHAK
+    ref: "Chapter 4 — Principles of Flight"
+  - doc: PHAK
+    ref: "Chapter 5 — Aerodynamics of Flight"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { AerodynamicsExplorer } from '../../sims/aero/AerodynamicsExplorer'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout title={frontmatter.title} acsRefs={frontmatter.acsRefs} sources={frontmatter.sources}>
+
+## Four forces of flight
+
+Every aircraft in flight is acted upon by four forces:
+
+- **Lift** — the upward aerodynamic force produced by the wings, acting perpendicular to the relative wind.
+- **Weight** — the downward pull of gravity acting through the aircraft's center of gravity.
+- **Thrust** — the forward force produced by the engine and propeller (or jet engine), overcoming drag.
+- **Drag** — the rearward aerodynamic resistance opposing motion through the air.
+
+In straight-and-level, unaccelerated flight, lift equals weight and thrust equals drag. Any imbalance causes the aircraft to accelerate in the direction of the unbalanced force.
+
+## Angle of attack
+
+**Angle of attack (AoA)** is the angle between the wing's chord line and the **relative wind** — the direction the air appears to be coming from, as seen from the aircraft. It is not the same as pitch attitude.
+
+A pilot can be pitched nose-high with a low AoA (climbing fast, so the relative wind still comes from ahead), or pitched nose-low with a high AoA (pulling hard out of a dive). AoA and pitch attitude are related but independent.
+
+As AoA increases, lift increases — up to the **critical AoA** (roughly 17–18° for a typical wing). Beyond the critical AoA, airflow separates from the upper wing surface and lift collapses. This is a **stall**.
+
+## The lift equation
+
+Lift is described by:
+
+**L = ½ ρ V² C&#8319; S**
+
+Where:
+- **ρ** (rho) — air density (decreases with altitude)
+- **V** — true airspeed (lift grows with the *square* of speed)
+- **C&#8319;** — lift coefficient (set by AoA and wing shape)
+- **S** — wing area
+
+The key insight: you can produce the same lift by using **more speed** (higher V) *or* **more AoA** (higher C&#8319;), or any combination. At slow speeds the wing must fly at a higher AoA to maintain lift; at high speeds it can fly at a very low AoA.
+
+## Stalls
+
+A stall occurs when the **critical AoA is exceeded** — not when airspeed drops below some fixed number. Consequences:
+
+- You can stall at any airspeed, in any attitude.
+- You can stall in a steep-banked turn at cruise speed by pulling back aggressively.
+- You can stall climbing or descending, upright or inverted.
+
+Recovery always requires reducing AoA (pushing forward on the controls), regardless of attitude or altitude. Adding power helps recover altitude but does not by itself unstall the wing.
+
+## Load factor and turns
+
+In a **coordinated level turn**, the wings must produce enough lift to both support the aircraft's weight *and* provide the centripetal force that curves the flight path. The result is a greater force on the structure — the **load factor**, measured in g.
+
+The relationship is:
+
+**n = 1 / cos(bank angle)**
+
+| Bank angle | Load factor |
+|-----------|------------|
+| 0° | 1.0 g |
+| 30° | 1.15 g |
+| 45° | 1.41 g |
+| 60° | 2.0 g |
+| 80° | 5.76 g |
+
+A 60° bank doubles the structural load. The aircraft's stall speed also rises with load factor:
+
+**Vs_turn = Vs_1g × √n**
+
+At a 60° bank (n = 2), stall speed rises by a factor of √2 ≈ 1.41. A C172S with a 1-g stall speed of 48 kt will stall at about 68 kt in a 60° bank.
+
+## Try it: adjust the controls
+
+Move the sliders to explore how AoA, airspeed, and bank angle interact. Watch the four-forces diagram update in real time.
+
+<AerodynamicsExplorer />
+
+---
+
+<QuestionCard
+  id="aero-q1"
+  prompt="What is angle of attack (AoA)?"
+  choices={[
+    "The pitch angle of the aircraft nose above the horizon",
+    "The angle between the wing chord line and the relative wind",
+    "The angle of the runway relative to level ground",
+    "The angle between climb rate and airspeed",
+  ]}
+  answer="The angle between the wing chord line and the relative wind"
+  explanation="AoA is the angle between the wing's chord line and the relative wind (the direction the air is coming from). Pitch attitude and AoA are related but not the same — an aircraft can be pitched up but have a low AoA if it's climbing slowly."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q2"
+  prompt="What causes a wing to stall?"
+  choices={[
+    "Airspeed drops below a fixed minimum speed",
+    "The critical angle of attack is exceeded",
+    "The engine fails",
+    "Altitude becomes too high",
+  ]}
+  answer="The critical angle of attack is exceeded"
+  explanation="A stall occurs when the wing exceeds its critical AoA, causing airflow to separate from the upper surface and lift to collapse. It can happen at any airspeed and any aircraft attitude."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q3"
+  prompt="If you double your airspeed, what happens to lift (all else equal)?"
+  choices={[
+    "Lift doubles",
+    "Lift quadruples (increases by a factor of 4)",
+    "Lift stays the same",
+    "Lift halves",
+  ]}
+  answer="Lift quadruples (increases by a factor of 4)"
+  explanation="In the lift equation L = ½ρV²ClS, lift varies with the square of velocity. Doubling V increases V² by a factor of 4, so lift quadruples."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q4"
+  prompt="An aircraft weighs 2,400 lb and enters a 60° bank coordinated turn. What is the approximate load on the structure?"
+  choices={[
+    "2,400 lb",
+    "3,394 lb",
+    "4,800 lb",
+    "1,200 lb",
+  ]}
+  answer="4,800 lb"
+  explanation="In a 60° bank, load factor n = 1/cos(60°) = 1/0.5 = 2.0. So the structural load is 2.0 × 2,400 lb = 4,800 lb. This is why steep turns stress the airframe."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q5"
+  prompt="If the 1-g stall speed is 48 kt, what is the stall speed in a 60° bank turn?"
+  choices={[
+    "48 kt",
+    "54 kt",
+    "68 kt",
+    "96 kt",
+  ]}
+  answer="68 kt"
+  explanation="In a 60° bank, load factor = 2.0. Stall speed in a turn = Vs × √n = 48 × √2 ≈ 48 × 1.414 ≈ 68 kt. Steep turns significantly raise stall speed."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q6"
+  prompt="Which of these statements about stalls is true?"
+  choices={[
+    "An aircraft can only stall when flying slowly.",
+    "An aircraft can only stall in level flight.",
+    "An aircraft can stall at any airspeed and any attitude.",
+    "Modern aircraft cannot stall.",
+  ]}
+  answer="An aircraft can stall at any airspeed and any attitude."
+  explanation="A stall is purely a function of exceeding the critical AoA. You can stall in a steep turn at cruise speed, pulling up aggressively, or at the top of a loop — not just during slow flight."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q7"
+  prompt="As a 172 climbs at the same airspeed and AoA, what happens to lift?"
+  choices={[
+    "Lift stays the same",
+    "Lift increases because altitude is higher",
+    "Lift decreases because air density decreases with altitude",
+    "Lift doubles with each 1,000 ft gained",
+  ]}
+  answer="Lift decreases because air density decreases with altitude"
+  explanation="In L = ½ρV²ClS, ρ (air density) decreases with altitude. At the same airspeed and AoA, lift decreases — which is why aircraft must fly at higher airspeeds or higher AoA at high altitudes."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q8"
+  prompt="What is induced drag?"
+  choices={[
+    "Drag caused by skin friction on the aircraft surface",
+    "Drag that results from lift production — it increases as lift increases",
+    "Drag from the landing gear doors being open",
+    "Drag caused by flying in turbulence",
+  ]}
+  answer="Drag that results from lift production — it increases as lift increases"
+  explanation="Induced drag is an unavoidable by-product of generating lift. It increases as AoA increases (and as airspeed decreases). Parasite drag does the opposite — it increases with airspeed. Total drag is minimized at the speed where induced and parasite drag are equal."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 5' }]}
+/>
+
+<QuestionCard
+  id="aero-q9"
+  prompt="In a coordinated level turn, the vertical component of lift must equal:"
+  choices={[
+    "Zero",
+    "The aircraft weight",
+    "Twice the aircraft weight",
+    "Half the aircraft weight",
+  ]}
+  answer="The aircraft weight"
+  explanation="To maintain altitude in a turn, the vertical component of lift (L × cos(bank)) must equal aircraft weight. This is why you must increase total lift (pull back) in a turn to maintain altitude — a portion of lift is now being used to turn."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+<QuestionCard
+  id="aero-q10"
+  prompt="What is the relationship between CL (lift coefficient) and AoA below the critical AoA?"
+  choices={[
+    "CL is inversely proportional to AoA",
+    "CL increases approximately linearly with AoA",
+    "CL is constant regardless of AoA",
+    "CL increases exponentially with AoA",
+  ]}
+  answer="CL increases approximately linearly with AoA"
+  explanation="Below the critical AoA, the lift coefficient increases approximately linearly with AoA. This is the basis of the simplified lift model. At the critical AoA (around 17–18° for a typical wing), CL reaches its maximum and then drops sharply as the wing stalls."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4' }]}
+/>
+
+</LessonLayout>

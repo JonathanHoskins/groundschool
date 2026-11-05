@@ -1,0 +1,184 @@
+---
+title: Weight and Balance
+acsRefs:
+  - PA.I.F.K3
+  - PA.I.F.K4
+sources:
+  - doc: PHAK
+    ref: "Chapter 10 — Weight and Balance"
+  - doc: PHAK
+    ref: "FAA-H-8083-25B"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { WeightBalanceSim } from '../../sims/wb/WeightBalanceSim'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acsRefs}
+  sources={frontmatter.sources}
+>
+
+## Why W&B matters
+
+Weight and balance is a mandatory preflight calculation — not optional paperwork. It has two independent failure modes that can each be fatal:
+
+- **Exceeding maximum gross weight** degrades every aspect of performance: longer takeoff roll, reduced climb rate, higher stall speed, longer landing distance, and possible structural overload. The aircraft was not certified for that weight.
+- **CG outside limits** affects longitudinal stability and control. A forward CG requires up-elevator force to maintain level flight and may leave insufficient elevator authority to flare on landing. An aft CG reduces longitudinal stability and in the extreme can make a stall or spin unrecoverable.
+
+Both must be checked before every flight, for the planned load at takeoff and after fuel burn.
+
+## Key terms
+
+**Datum** — An arbitrary reference plane defined in the aircraft's Type Certificate Data Sheet (TCDS). All arm measurements are made from this point.
+
+**Arm** — The horizontal distance in inches from the datum to the point where a weight acts. Weights forward of the datum have a negative arm; weights aft have a positive arm.
+
+**Moment** — Weight multiplied by arm (in lb × in). Moments are additive. The sum of all moments divided by the total weight gives the center of gravity.
+
+**Center of Gravity (CG)** — The point where the aircraft would balance if suspended. Calculated as:
+
+> CG = Total Moment ÷ Total Weight
+
+**Useful load** — Maximum gross weight minus empty weight. This is the total available for pilots, passengers, baggage, fuel, and oil.
+
+**Loading envelope** — A chart in the POH showing the range of CG positions (in inches from the datum) that are legal at each gross weight. The aircraft must remain inside this envelope throughout the flight.
+
+## The C172S loading envelope
+
+The chart below shows the normal category and utility category envelopes for a Cessna 172S (PLACEHOLDER values — see disclaimer). The x-axis is CG position in inches from the datum. The y-axis is gross weight in pounds.
+
+The normal envelope is the larger region (blue outline). The utility envelope (purple outline) is a smaller subset that must be used for intentional maneuvers like spins and steep turns in the utility category. To remain in the utility category the aircraft must be lighter and the CG must stay closer to the forward portion of the envelope.
+
+The colored dot on the chart shows your current computed CG and weight. Green means legal; red means out of limits.
+
+## Try it: load the aircraft
+
+Move the sliders to see how loading choices affect the CG and whether the aircraft stays within its envelope. Notice that rear passengers and aft baggage move the CG aft, while heavier front-seat loading moves it forward. Fuel at arm 48 in is aft of the typical loaded CG, so as fuel burns the CG tends to shift forward.
+
+<WeightBalanceSim />
+
+## Review questions
+
+<QuestionCard
+  id="wb-q1"
+  prompt="A 170 lb pilot sits in the front seat (arm 37 in). What is the moment?"
+  choices={['5,560 in-lb', '6,290 in-lb', '7,140 in-lb', '4,410 in-lb']}
+  answer="6,290 in-lb"
+  explanation="Moment = weight × arm = 170 lb × 37 in = 6,290 in-lb. The moment is the product of a weight and its distance from the datum."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q2"
+  prompt="What does a forward CG (beyond the forward limit) primarily cause?"
+  choices={[
+    'Reduced stall speed',
+    'Increased tendency to pitch nose-down, requiring more up elevator',
+    'Reduced range',
+    'Improved climb performance',
+  ]}
+  answer="Increased tendency to pitch nose-down, requiring more up elevator"
+  explanation="A forward CG increases the nose-down pitching tendency. At the extreme forward limit, the elevator may not have enough authority to flare for landing."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q3"
+  prompt="What does an aft CG (beyond the aft limit) primarily cause?"
+  choices={[
+    'Better fuel economy',
+    'Reduced takeoff distance',
+    'Reduced longitudinal stability — the aircraft may be unrecoverable from a stall or spin',
+    'More comfortable for rear passengers',
+  ]}
+  answer="Reduced longitudinal stability — the aircraft may be unrecoverable from a stall or spin"
+  explanation="An aft CG reduces longitudinal stability. In the most extreme case, the aircraft may not be recoverable from a stall or spin."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q4"
+  prompt="An aircraft has total weight 2,100 lb and total moment 84,840 in-lb. What is the CG?"
+  choices={['39.0 in', '40.4 in', '42.0 in', '44.6 in']}
+  answer="40.4 in"
+  explanation="CG = Total Moment ÷ Total Weight = 84,840 ÷ 2,100 = 40.4 in from the datum."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q5"
+  prompt="As fuel burns during a flight, what generally happens to the CG on a C172?"
+  choices={[
+    'CG moves forward',
+    'CG moves aft',
+    "CG doesn't change because weight is lost symmetrically",
+    'CG moves up',
+  ]}
+  answer="CG moves forward"
+  explanation="On the C172S, the fuel tanks (arm ≈ 48 in) are aft of the typical loaded CG (≈ 40 in). As fuel burns, the aft weight is reduced, so CG tends to shift forward."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q6"
+  prompt="How much does 10 gallons of aviation gasoline (avgas) weigh?"
+  choices={['50 lb', '60 lb', '70 lb', '80 lb']}
+  answer="60 lb"
+  explanation="Avgas weighs approximately 6.0 lb per gallon. 10 gal × 6.0 lb/gal = 60 lb."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q7"
+  prompt="An aircraft's empty weight is 1,634 lb and its maximum gross weight is 2,550 lb. What is the useful load?"
+  choices={['916 lb', '1,634 lb', '2,550 lb', '4,184 lb']}
+  answer="916 lb"
+  explanation="Useful load = Max gross weight − Empty weight = 2,550 − 1,634 = 916 lb. Useful load includes pilots, passengers, baggage, fuel, and oil."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q8"
+  prompt="During preflight planning, you calculate the aircraft will be 50 lb over max gross weight. The best action is to:"
+  choices={[
+    'Depart anyway — a small overload is usually fine',
+    'Remove 50 lb or more of load (fuel, baggage, or passengers)',
+    'Take off at a higher speed to compensate',
+    'Only worry about CG, not gross weight',
+  ]}
+  answer="Remove 50 lb or more of load (fuel, baggage, or passengers)"
+  explanation="Flying over max gross weight is illegal and dangerous. It increases stall speed, reduces climb performance, and may exceed structural limits. The only safe option is to reduce load."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q9"
+  prompt="If the CG is within limits but very close to the aft limit, which concern is most relevant?"
+  choices={[
+    'High fuel consumption',
+    'Reduced longitudinal stability and pitch control effectiveness',
+    'Reduced range from increased drag',
+    'Structural overload',
+  ]}
+  answer="Reduced longitudinal stability and pitch control effectiveness"
+  explanation="As CG moves aft toward the limit, the aircraft becomes less stable and pitch control authority decreases. This is most critical during stall recovery."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+<QuestionCard
+  id="wb-q10"
+  prompt="You load 100 lb in Baggage Area A (max 120 lb) and 60 lb in Baggage Area B (max 50 lb). Which statement is correct?"
+  choices={[
+    'Both areas are within limits.',
+    'Baggage Area A is over its 120 lb limit.',
+    'Baggage Area B exceeds its 50 lb limit.',
+    'The total baggage (160 lb) always exceeds combined limits.',
+  ]}
+  answer="Baggage Area B exceeds its 50 lb limit."
+  explanation="Area A has 100 lb against a 120 lb limit — legal. Area B has 60 lb against a 50 lb limit — 10 lb over. Each compartment has its own structural limit that must not be exceeded, even if total weight is within gross weight limits."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 10' }]}
+/>
+
+</LessonLayout>

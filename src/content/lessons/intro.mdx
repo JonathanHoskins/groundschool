@@ -1,0 +1,42 @@
+---
+title: Welcome to Groundschool
+acsRefs: []
+sources:
+  - doc: PHAK
+    ref: "Chapter 1"
+---
+
+import { LessonLayout } from '../../components/LessonLayout'
+import { AltitudeSim } from '../../sims/altitude/AltitudeSim'
+import { QuestionCard } from '../../components/QuestionCard'
+
+<LessonLayout
+  title={frontmatter.title}
+  acsRefs={frontmatter.acsRefs}
+  sources={frontmatter.sources}
+>
+
+## How this works
+
+Every lesson follows the same loop:
+
+1. **Read a short explanation** — just enough to know what to look for.
+2. **Manipulate a simulation** — move sliders, change inputs, watch the outputs.
+3. **Answer questions** — the questions make you use what you just saw, not just recall a definition.
+
+## Try it: altitude and pressure
+
+The atmosphere gets thinner as you climb. Move the slider to see how pressure altitude changes with elevation.
+
+<AltitudeSim />
+
+<QuestionCard
+  id="intro-q1"
+  prompt="As altitude increases, atmospheric pressure _____."
+  choices={['increases', 'decreases', 'stays the same']}
+  answer="decreases"
+  explanation="Atmospheric pressure decreases with altitude because there is less air column above you pressing down. This is why density altitude matters for aircraft performance."
+  sources={[{ doc: 'PHAK', ref: 'Chapter 4 — Altitude and the Atmosphere' }]}
+/>
+
+</LessonLayout>

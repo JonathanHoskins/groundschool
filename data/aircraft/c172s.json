@@ -1,0 +1,25 @@
+{
+  "id": "c172s",
+  "model": "Cessna 172S Skyhawk SP",
+  "sourceNote": "PLACEHOLDER — all values must be verified against a specific 172S POH revision before use in real flight planning",
+  "emptyWeightLb": 1634,
+  "emptyArmIn": 39.5,
+  "maxGrossLb": { "normal": 2550, "utility": 1950 },
+  "stations": [
+    { "id": "frontSeats",  "name": "Front seats",    "armIn": 37.0 },
+    { "id": "rearSeats",   "name": "Rear seats",     "armIn": 73.0 },
+    { "id": "baggageA",    "name": "Baggage area A", "armIn": 95.0,  "maxLb": 120 },
+    { "id": "baggageB",    "name": "Baggage area B", "armIn": 123.0, "maxLb": 50  }
+  ],
+  "fuel": { "usableGal": 53, "armIn": 48.0, "lbPerGal": 6.0 },
+  "envelope": {
+    "normal":  [[35.0, 1500], [47.3, 1500], [47.3, 2550], [35.0, 2550]],
+    "utility": [[35.0, 1500], [40.5, 1500], [40.5, 1950], [35.0, 1950]]
+  },
+  "vSpeeds": {
+    "Vs":  48,  "Vs0": 40,  "Vx": 62,
+    "Vy":  74,  "Va":  89,  "Vno": 129,
+    "Vne": 163, "Vfe": 110
+  },
+  "performance": {}
+}

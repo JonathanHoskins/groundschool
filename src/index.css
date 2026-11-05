@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Class-based dark mode for toggle support */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-brand: #0ea5e9;
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
+}
+
+body {
+  margin: 0;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
